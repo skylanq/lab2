@@ -1,19 +1,45 @@
 #include <stdio.h>
 
 int main(void) {
-  double arr[3][3];
+  int n,a;
+  scanf("%d %d", &n, &a);
+  double arr[n][n];
   double ark[2][2], ark1[2][2];
   int x,y;
   double main = 0.0, pob = 0.0;
+  int k = 0, l, r;
   printf("Введите значения матрицы: \n");
-  for (int x = 0; x < 3; x++){ 
-    for (int y = 0; y < 3; y++){
+  for (int x = 0; x < n; x++){ 
+    for (int y = 0; y < n; y++){
       scanf("%lf",&arr[x][y]);
     }
   }
-  for(x = 0; x < 3; x++){
-    main += arr[1][1];
-    pob += arr[1][3-x-1];
+  for(x = 0; x < n; x++){
+    main += arr[x][x];
+    pob += arr[x][n-x-1];
   }
-  printf("main =  %lf\n",main);
-  printf("pob =  %lf\n",pob);
+  printf("main =  %0.1lf\n",main);
+  printf("pob =  %0.1lf\n",pob);
+
+  printf("Введите значения матрицы: \n");
+  for(x = 0; x < a; x++){
+    for(y = 0; y < a; y++){
+      scanf("%lf",&ark[x][y]);
+    }
+  }
+    for (x = 0; x < a; x++){
+      for (y = 0; y < a; y++){
+        ark1[x][y] = 0;
+        for (l = 0; l < a; l++)
+           ark1[x][y] += (ark[x][l] * ark[l][y]);
+           k++;
+      }
+    }
+    for (x = 0; x<a; x++){
+      for (y = 0; y<a; y++){
+        printf("%0.1lf  ", ark1[x][y]);
+      }
+      printf("\n");
+    }
+  return 0;
+}
